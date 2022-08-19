@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="MyQueue.cpp">
+      <Filter>MyQueue</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Snake</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyQueue.h">
+      <Filter>MyQueue</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>Snake</Filter>
+    </ClInclude>
+    <ClInclude Include="Coords.h">
+      <Filter>Resourses</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{68c435b4-f54d-41b5-a3c7-4acc3fd0b5b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resourses">
+      <UniqueIdentifier>{e5bb70d5-15f2-48a4-be1a-cf56c11c9d5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MyQueue">
+      <UniqueIdentifier>{15c8e576-0c07-4a5c-a230-f735df9698ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{90930f98-041e-4572-94f1-c05677ce95c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Snake">
+      <UniqueIdentifier>{3511a386-4720-4b50-852b-91592807118e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
