@@ -10,7 +10,7 @@
 void define_coords(Fruit* myfruit, int mapsize)
 {
 	using namespace std;
-	srand(unsigned(time(0)));
+	
 	myfruit->coords.x = (rand() % mapsize);
 	myfruit->coords.y = (rand() % mapsize);
 }
@@ -18,7 +18,7 @@ void define_coords(Fruit* myfruit, int mapsize)
 
 void replace_fruit(Fruit* myfruit, Map* mymap)
 {
-	
+	srand(unsigned(time(0)));
 	define_coords(myfruit, mymap->mapsize);
 	while (get_symbol(mymap, myfruit->coords) != ' ') {
 		define_coords(myfruit, mymap->mapsize);

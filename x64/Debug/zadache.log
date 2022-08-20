@@ -1,4 +1,8 @@
-﻿  GameProcess.cpp
+﻿  Fruit.cpp
+  GameProcess.cpp
   main.cpp
+  Snake.cpp
+  Map.cpp
+  MyQueue.cpp
   Generating Code...
   zadache.vcxproj -> D:\Projects Visual Studio\znake\x64\Debug\znake.exe

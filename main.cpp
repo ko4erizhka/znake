@@ -14,19 +14,20 @@ int main() {
 	Fruit fruit;
 
 	InitializeZnake(&map, &snake, &fruit, 22);
-	std::thread first (get_direction,&snake,&mygame);
-	
+	std::thread first(get_direction, &snake, &mygame);
+	int speed = 100;
+	int i = 0;
+
 	while (mygame.gamecurrent) {
 
-		int speed = 100;
-		int i = 0;
 
+		reset_map(&map);
 		draw_snake(&snake, &map);
 		draw_fruit(&fruit, &map);
 		draw_map(&map);
 		Sleep(speed);
-		
-		
+
+
 
 
 		if (get_symbol(&map, check_next_move(&snake, &map)) == map.border || get_symbol(&map, check_next_move(&snake, &map)) == snake.symbol)
@@ -38,19 +39,22 @@ int main() {
 			remove_fruit(&fruit, &map);
 			replace_fruit(&fruit, &map);
 			grow_snake(&snake);
-			i+=1;
-			if (i%5 == 0) speed -=1;
-
+			i += 1;
+			if (i % 5 == 0) speed -= 1;
+			continue;
 		}
 
 		move_snake(&snake, &map);
-		reset_map(&map);
-		
-		
+
+
+
 	}
-	
+
 	DisposeZnake(&map, &snake);
 	GameOver();
 	first.join();
+
+
+
 	return 0;
 }

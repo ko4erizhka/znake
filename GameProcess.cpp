@@ -53,7 +53,7 @@ void get_direction(Snake *snake, Game *mygame){
 
 	while (true) {
 		if (GetKeyState(27) < 0){mygame->gamecurrent = 0; break;}
-		else if (GetKeyState(13) < 0){}
+		
 		else if (GetKeyState(37) < 0 && snake->direction != right) //left
 		{
 			snake->direction = left;
