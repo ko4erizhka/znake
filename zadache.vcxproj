@@ -140,6 +140,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Fruit.cpp" />
+    <ClCompile Include="GameProcess.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -147,6 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coords.h" />
+    <ClInclude Include="Fruit.h" />
+    <ClInclude Include="GameProcess.h" />
     <ClInclude Include="MyQueue.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Snake.h" />

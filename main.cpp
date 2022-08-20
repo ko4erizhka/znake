@@ -1,28 +1,56 @@
 #include "Snake.h"
 #include "Map.h"
+#include "Fruit.h"
+#include "GameProcess.h"
 #include "windows.h"
+#include <thread>
 
-int main(){
-	
-	
+
+int main() {
+
+	Game mygame;
 	Map map;
 	Snake snake;
-	create_map(&map,22);
-	create_snake(&snake,map.mapsize);
-	reset_map(&map);
-	for (int i = 0;i<8;i++){
+	Fruit fruit;
+
+	InitializeZnake(&map, &snake, &fruit, 22);
+	std::thread first (get_direction,&snake,&mygame);
+	
+	while (mygame.gamecurrent) {
+
+		int speed = 100;
+		int i = 0;
+
 		draw_snake(&snake, &map);
+		draw_fruit(&fruit, &map);
 		draw_map(&map);
-		move_snake(&snake);
-		Sleep(1500);
+		Sleep(speed);
+		
+		
+
+
+		if (get_symbol(&map, check_next_move(&snake, &map)) == map.border || get_symbol(&map, check_next_move(&snake, &map)) == snake.symbol)
+		{
+
+			break;
+		}
+		else if (get_symbol(&map, check_next_move(&snake, &map)) == fruit.symbol) {
+			remove_fruit(&fruit, &map);
+			replace_fruit(&fruit, &map);
+			grow_snake(&snake);
+			i+=1;
+			if (i%5 == 0) speed -=1;
+
+		}
+
+		move_snake(&snake, &map);
 		reset_map(&map);
-		if (i == 2) snake.snake_dir = up;
-		if (i == 4) snake.snake_dir = left;
-		if (i == 6) snake.snake_dir = down;
+		
+		
 	}
 	
-	delete_snake(&snake);
-	delete_map(&map);
-
-	return 1;
+	DisposeZnake(&map, &snake);
+	GameOver();
+	first.join();
+	return 0;
 }

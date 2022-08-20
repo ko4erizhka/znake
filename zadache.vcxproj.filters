@@ -11,6 +11,12 @@
       <Filter>Snake</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Fruit.cpp">
+      <Filter>Fruit</Filter>
+    </ClCompile>
+    <ClCompile Include="GameProcess.cpp">
+      <Filter>GameProc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyQueue.h">
@@ -24,6 +30,12 @@
     </ClInclude>
     <ClInclude Include="Coords.h">
       <Filter>Resourses</Filter>
+    </ClInclude>
+    <ClInclude Include="Fruit.h">
+      <Filter>Fruit</Filter>
+    </ClInclude>
+    <ClInclude Include="GameProcess.h">
+      <Filter>GameProc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +53,12 @@
     </Filter>
     <Filter Include="Snake">
       <UniqueIdentifier>{3511a386-4720-4b50-852b-91592807118e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fruit">
+      <UniqueIdentifier>{307b6b2f-4bf9-4fb6-84b3-b5e188ea15ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameProc">
+      <UniqueIdentifier>{61d9622d-296c-4d51-bad2-32d45a2c11f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

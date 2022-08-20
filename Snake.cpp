@@ -6,34 +6,28 @@
 
 void create_snake(Snake *snake, int cs_mapsize) {
 	int map_center = cs_mapsize/2; //получаем центр карты
-
 	snake->symbol = 'o';
-	snake->length = 2;
-	snake->snake_dir = right;
+	snake->direction = right;
 	snake->body = {};
 	Push(&snake->body,{map_center,map_center});			//вставляем первые два элемента змеи
-	Push(&snake->body,{map_center+1,map_center});
-	Push(&snake->body,{map_center+2,map_center});
+	grow_snake(snake);
+	grow_snake(snake);
 }
 
 void delete_snake(Snake *snake) {
-
-	while (snake->length>0) {
+	while (snake->body.head) {
 		Pop(&snake->body);
 	}
-
 }
 
-void move_snake(Snake *snake){
-	
+Coords check_next_move(Snake* snake,Map *map)
+{
 	MyQueue *snake_body = &snake->body;//указатель на тело змеи чтобы проще было
 	Coords moving_segment = Back(snake_body);//получение координат головы во внешнюю переменную
-	Pop(snake_body);//удаление хвоста
 
-	switch(snake->snake_dir)
+	switch(snake->direction)
 	{	
-		case stop:
-			break;
+		
 		case right:
 			moving_segment.x = moving_segment.x+1;
 			break;
@@ -47,7 +41,16 @@ void move_snake(Snake *snake){
 			moving_segment.y = moving_segment.y-1;
 			break;
 	}
-	Push(snake_body,moving_segment);//вставка новой головы змеи
+	
+	return moving_segment;
+	
+	
+}
+
+void move_snake(Snake *snake,Map *map){
+	
+	Pop(&snake->body);//удаление хвоста
+	Push(&snake->body,check_next_move(snake,map));
 }
 
 void draw_snake(Snake *snake, Map *map){
@@ -58,4 +61,26 @@ void draw_snake(Snake *snake, Map *map){
 	}
 	map->map[tempbodypart->coords_data.y][tempbodypart->coords_data.x] = snake->symbol;
 		
+}
+
+void grow_snake(Snake *snake){
+	
+	Coords growing_segment = Back(&snake->body);
+	switch(snake->direction)
+	{	
+		case right:
+			growing_segment.x++;
+			break;
+		case up:
+			growing_segment.y++;
+			break;
+		case left:
+			growing_segment.x--;
+			break;
+		case down:
+			growing_segment.y--;
+			break;
+	}
+	
+	Push(&snake->body,growing_segment);
 }

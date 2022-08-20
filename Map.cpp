@@ -1,6 +1,8 @@
 #include "Map.h"
+#include "Coords.h"
 #include <iostream>
 #include "cstring"
+#include "stdlib.h"
 
 void create_map(Map *mymap, int mapsize){
 	mymap->mapsize = mapsize;
@@ -24,7 +26,7 @@ void reset_map(Map *mymap) {
 
 	for (int y = 0; y < mymap->mapsize; y++) {
 		for (int x = 0; x < mymap->mapsize; x++) {
-			mymap->map[y][x] = '#';
+			mymap->map[y][x] = mymap->border;
 		}
 	}
 
@@ -36,11 +38,20 @@ void reset_map(Map *mymap) {
 }
 
 void draw_map(Map *mymap) {
-	for (int y = 0; y < mymap->mapsize; y++) {
+	using namespace std;
+
+	string screen;
+	 
+	for (int y = mymap->mapsize-1; y >= 0 ; y--) {
 		for (int x = 0; x < mymap->mapsize; x++) {
-			std::cout << mymap->map[y][x];
+			screen += mymap->map[y][x];
 		}
-		std::cout << "\n";
+		screen += "\n";
 	}
-	std::cout << "\n\n\n\n\n\n\n\n";
+	std::system("CLS");
+	cout<<screen;
+}
+
+char get_symbol(Map *mymap, Coords check_coords){
+	return mymap->map[check_coords.y][check_coords.x];
 }
